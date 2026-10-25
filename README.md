@@ -41,16 +41,9 @@ A **negative** code means the boat is leaving the original side, and a **positiv
 5. Otherwise, if the child's state has not been reached before, add it to `reached` and the `frontier`.
 6. `trace` follows `parent` links back to the root and reverses the list, giving the path from start to goal.
 
-## Build and Run
-
-```bash
-g++ -std=c++17 -o mc_bfs BFS Search Algorithm.cpp
-./mc_bfs
-```
-On Windows, run `mc_bfs.exe`.
-
 ## Example Output
-This is a sample of one of the steps in the process in which the program will take 11 crossings, moving between 12 states to match the optimal solution.
+
+The output is ran through the mc_bfs file in terminal that is produced through running the BFS_Search_Algorithm.cpp. This is a sample of one of the steps in the process in which the program will take 11 crossings, moving between 12 states to match the optimal solution.
 
 ```
 \__/   CC
@@ -63,6 +56,16 @@ This is a sample of one of the steps in the process in which the program will ta
 
 Next step : -2
 ```
+
+## Build and Run
+
+```bash
+g++ -std=c++17 -o mc_bfs BFS Search Algorithm.cpp
+./mc_bfs
+```
+On Windows, run `mc_bfs.exe`.
+
+
 
 ## Complexity
 
