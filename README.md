@@ -1,5 +1,5 @@
 # Missionaries and Cannibals: BFS Solver (C++)
-A C++ solution I built in Fall 2025 to the classic Missionaries and Cannibals puzzle using Breadth-First Search (BFS). 
+A C++ solution I built in Fall 2025 to the classic Missionaries and Cannibals puzzle using Breadth-First Search (BFS). Made compatibility changes in Fall 2026 for Mac.
 
 ## The Problem
 
