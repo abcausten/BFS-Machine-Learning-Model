@@ -4,13 +4,34 @@
 #include <stack>
 #include <map>
 #include <iomanip>
-
-
+#include <algorithm>
+#include <string> 
+#include <cstdlib>
 using namespace std;
+
+
+
+//Screens are helper functions to make the code run on both Mac and Windows
+void clearScreen()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+void pauseScreen()
+{
+    cout << "\nPress Enter to continue...";
+    cin.get();
+}
+
 struct mcState
 {
 	bool boatPresent; //true if boat is on the original side
 	int mis; //number of missionaries on the original side
+	
 	int can; //number of cannibals on the original side
 };
 // Start = { 1,3,3 };  Goal = { 0,0,0 };
@@ -85,20 +106,20 @@ int main()
 		cout << "Pathsize=" << n1 << endl;
 		for (int i = n1 - 1; i >= 0; i--)
 		{
-			system("cls");
+			clearScreen(); 
 			int z = path[i].stateId;
 			mcState s = id2state(z);
 			display(s);
 			if (i > 0)
 				cout << "\nNext step : " << path[i - 1].action << endl;
-			system("pause");
+			pauseScreen();
 		}
 	}
 	else
 	{
 		cout << "No solution!!!" << endl;
 	}
-	system("pause");
+	pauseScreen();
 	return 0;
 }
 

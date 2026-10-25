@@ -1,6 +1,5 @@
 # Missionaries and Cannibals: BFS Solver (C++)
-
-A C++ solution to the classic Missionaries and Cannibals puzzle using Breadth-First Search (BFS). Because BFS explores states level by level, it returns a **shortest** sequence of boat crossings.
+A C++ solution I built in Fall 2025 to the classic Missionaries and Cannibals puzzle using Breadth-First Search (BFS). 
 
 ## The Problem
 
@@ -25,11 +24,22 @@ Three missionaries and three cannibals are on one side of a river with a boat th
 
 | Code | Boat contents |
 |------|---------------|
-| 1    | 1 cannibal |
-| 2    | 2 cannibals |
-| 10   | 1 missionary |
-| 20   | 2 missionaries |
-| 11   | 1 missionary + 1 cannibal |
+| `1` / `-1` | 1 cannibal |
+| `2` / `-2` | 2 cannibals |
+| `10` / `-10` | 1 missionary |
+| `20` / `-20` | 2 missionaries |
+| `11` / `-11` | 1 missionary + 1 cannibal |
+
+A **negative** code means the boat is leaving the original side, and a **positive** code means it is returning.
+
+### Algorithm
+
+1. Start with the initial node `{boat on original side, 3 missionaries, 3 cannibals}` in a FIFO `frontier` queue.
+2. Pop a node and call `Expand` to generate every legal child (one per boat load).
+3. `validState` rejects states with negative counts or where cannibals outnumber missionaries on either bank (when missionaries are present).
+4. If a child is the goal, stop and call `trace`.
+5. Otherwise, if the child's state has not been reached before, add it to `reached` and the `frontier`.
+6. `trace` follows `parent` links back to the root and reverses the list, giving the path from start to goal.
 
 ## Build and Run
 
@@ -37,19 +47,24 @@ Three missionaries and three cannibals are on one side of a river with a boat th
 g++ -std=c++17 -o mc_bfs BFS Search Algorithm.cpp
 ./mc_bfs
 ```
+On Windows, run `mc_bfs.exe`.
 
 ## Example Output
+This is a sample of one of the steps in the process in which the program will take 11 crossings, moving between 12 states to match the optimal solution.
 
 ```
-[paste your program's output here]
-```
+\__/   CC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MMM C
 
-BFS finds the optimal solution for the standard puzzle, which takes **11 crossings**. Check this against your output.
+Next step : -2
+```
 
 ## Complexity
 
-The state space is small (at most `(M+1) * (C+1) * 2` states), so BFS runs quickly. Time and space are both O(number of states).
+The state space is small (at most 32 states), so BFS runs quickly. 
 
-## Author
-
-[Your Name]
