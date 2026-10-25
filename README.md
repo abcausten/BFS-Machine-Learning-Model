@@ -34,7 +34,7 @@ Three missionaries and three cannibals are on one side of a river with a boat th
 ## Build and Run
 
 ```bash
-g++ -std=c++17 -o mc_bfs [your_file].cpp
+g++ -std=c++17 -o mc_bfs BFS Search Algorithm.cpp
 ./mc_bfs
 ```
 
